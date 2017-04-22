@@ -6,7 +6,6 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        MainLabel.Text = "<h1>News Aggregator</h1><br>";
     }
 
     protected void GreetButton_Click(object sender, EventArgs e)
