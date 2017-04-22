@@ -21,7 +21,7 @@ public class XMLParser
         titles = new List<List<string>>();
         links = new List<List<string>>();
         Parse("http://rss.detik.com/index.php/detikcom");
-        Parse("http://tempo.co/rss/terkini");
+        //Parse("http://tempo.co/rss/terkini");
         //Parse("http://rss.vivanews.com/get/all");
         //Parse("http://www.antaranews.com/rss/terkini");
     }

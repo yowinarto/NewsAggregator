@@ -11,6 +11,7 @@ public static class Main
     private static List<List<string>> titles;
     private static List<List<string>> links;
     private static List<List<string>> content;
+    private static int algoType;
 
     public static void Initialize()
     {
@@ -29,12 +30,25 @@ public static class Main
             for (int j = 0; j < titles[i].Count; j++)
             {
                 List<string> temp = new List<string>();
-                int matchIdx = KMPMatcher.KMPMatch(titles[i][j], pattern);
-                if(matchIdx == -1)
-                    matchIdx = KMPMatcher.KMPMatch(content[i][j], pattern);
-                if (matchIdx != -1)
+                string tempIns;
+                int matchIdx = SearchAlgorithm(titles[i][j], pattern);
+                if (matchIdx == -1)
                 {
-                    temp.Add(titles[i][j]);
+                    matchIdx = SearchAlgorithm(content[i][j], pattern);
+                    if (matchIdx != -1)
+                    {
+                        tempIns = content[i][j].Insert(matchIdx + pattern.Length, "</b>");
+                        tempIns = tempIns.Insert(matchIdx, "<b>");
+                        temp.Add(titles[i][j]);
+                        temp.Add(links[i][j]);
+                        temp.Add(tempIns);
+                        result.Add(temp);
+                    }
+                } else
+                {
+                    tempIns = titles[i][j].Insert(matchIdx + pattern.Length, "</b>");
+                    tempIns = tempIns.Insert(matchIdx, "<b>");
+                    temp.Add(tempIns);
                     temp.Add(links[i][j]);
                     temp.Add(content[i][j]);
                     result.Add(temp);
@@ -42,5 +56,24 @@ public static class Main
             }
         }
         return result;
+    }
+
+    public static void SetAlgorithm(int type) {
+        algoType = type;
+    }
+
+    private static int SearchAlgorithm(string strContent, string pattern)
+    {
+        switch (algoType)
+        {
+            case 0:
+                return KMPMatcher.KMPMatch(strContent, pattern);
+            case 1:
+                return BayerMooreMatcher.BMMatch(strContent, pattern);
+            case 2:
+                return RegexMatcher.RegexMatch(strContent, pattern);
+            default:
+                return -1;
+        }
     }
 }
