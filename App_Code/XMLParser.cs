@@ -22,8 +22,8 @@ public class XMLParser
         links = new List<List<string>>();
         Parse("http://rss.detik.com/index.php/detikcom");
         Parse("http://tempo.co/rss/terkini");
-        Parse("http://rss.vivanews.com/get/all");
-        Parse("http://www.antaranews.com/rss/terkini");
+        //Parse("http://rss.vivanews.com/get/all");
+        //Parse("http://www.antaranews.com/rss/terkini");
     }
 
     public List<List<string>> getTitles() {
@@ -47,7 +47,7 @@ public class XMLParser
             XmlNode subNode = feedNode.SelectSingleNode("title");
             title.Add(subNode.InnerText);
             subNode = feedNode.SelectSingleNode("link");
-            link.Add(subNode.InnerText);
+            link.Add(subNode.InnerText);     
         }
         titles.Add(title);
         links.Add(link);
