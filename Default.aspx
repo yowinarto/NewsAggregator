@@ -21,7 +21,7 @@
             <br />
         <asp:RadioButton ID="KMP" runat="server" Checked="True" OnCheckedChanged="KMP_CheckedChanged" Text="KMP Algorithm" AutoPostBack="True" />
             <br />
-        <asp:RadioButton ID="BayerMoore" runat="server" OnCheckedChanged="BayerMoore_CheckedChanged" Text="BayerMoore Algorithm" AutoPostBack="True" />
+        <asp:RadioButton ID="BoyerMoore" runat="server" OnCheckedChanged="BoyerMoore_CheckedChanged" Text="BoyerMoore Algorithm" AutoPostBack="True" />
             <br />
         <asp:RadioButton ID="Regex" runat="server" OnCheckedChanged="Regex_CheckedChanged" Text="Regex" AutoPostBack="True" />
         </div>
@@ -32,7 +32,8 @@
         <asp:Button runat="server" ID="GreetButton" Text="Search" OnClick="GreetButton_Click" style="margin-left: 14px" />
         </div>
         <p>
-            &nbsp;</p>
+            <a href="About.aspx">Perihal</a>
+        </p>
     </form>
 </body>
 </html>

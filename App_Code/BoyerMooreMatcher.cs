@@ -43,14 +43,15 @@ public class BayerMooreMatcher
 
     private static int[] buildLast(String pattern)
     {
-        int[] last = new int[128];
-        for (int i = 0; i < 128; i++)
+        String lowPattern = pattern.ToLower();
+        int[] last = new int[150];
+        for (int i = 0; i < 150; i++)
         {
             last[i] = -1;
         }
         for (int i = 0; i < pattern.Length; i++)
         {
-            last[pattern[i]] = i;
+            last[lowPattern[i]] = i;
         }
         return last;
     }
